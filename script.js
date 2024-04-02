@@ -18,10 +18,7 @@ let absoluteUserChoice = userChoice.toLowerCase();
 return absoluteUserChoice;
 }
 
-// let userChoice = userInput();
 
-// console.log("You chose " + userChoice);
-// console.log ("The computer chose " + computerChoice);
 
 function gameResults(x,   y) {
    if ((x  == "rock") &&   y  == "paper") {
@@ -44,9 +41,7 @@ function gameResults(x,   y) {
     
 }
 
-// let results = gameResults(computerChoice, userChoice);
 
-// console.log(results);
 
 function playGame(x) {
         // let wins = results.includes("win");
