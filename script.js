@@ -7,16 +7,10 @@ function getComputerChoice() {
     } else {
         return "scissors";
     }
+    
 }
 
-let computerChoice = getComputerChoice();
 
-
-function userInput(){
-let userChoice = prompt("Choose Rock, Paper, or Scissors");
-let absoluteUserChoice = userChoice.toLowerCase();
-return absoluteUserChoice;
-}
 
 
 
@@ -37,41 +31,63 @@ function gameResults(x,   y) {
     return "It's a Tie. Try again!";
    } else {
     return "Something didn't add up did you spell your answer right? Please try again.";
-   }
+   }}
+
+
+   let buttonRock = document.querySelector("#buttonRock");
+   let buttonPaper = document.querySelector('#buttonPaper');
+   let buttonScissor = document.querySelector('#buttonScissor');
+   let results = document.querySelector('#results');
+   let buttons = document.querySelector("#buttons");
+
     
-}
+   
 
+    
+    buttons.addEventListener("click", event => {
+            let target = event.target.id;
+let computerChoice = getComputerChoice();
+            switch(target){
+                case "buttonRock" :
+                    let rockGame = gameResults(computerChoice, "rock");
+                    results.textContent = rockGame;
+                    break;
 
+                case "buttonPaper" :
+                    let paperGame = gameResults(computerChoice, "paper");
+                    results.textContent = paperGame;
+                    break;
 
-function playGame(x) {
-        // let wins = results.includes("win");
-        // let loss = results.includes("lose");
-        let totalWins = 0;
-        let totalLoses = 0;
-        let totalTies = 0;
-        let numberGames = 0;
-
-    while (numberGames < x) {
-        
-        let userGamePick = userInput();
-        let computerGamePick = getComputerChoice();
-
-           let round = gameResults(computerGamePick, userGamePick );
-            if (round.includes("win") === true) {
-                totalWins++ ;
-                numberGames++;
-            } else if (round.includes("lose") === true) {
-                totalLoses++ ;
-                numberGames++;
-            } else {
-                totalTies++;
-                numberGames++;
+                case "buttonScissor" :
+                    let scissorGame = gameResults(computerChoice, "scissors");
+                    results.textContent = scissorGame;
+                    break;
             }
-            console.log(round);
-        
-        
-    }
-    return "You won " + totalWins + ", lost " + totalLoses + ", and tied " + totalTies + " times.";
-}
+   });
 
-console.log(playGame(5));
+
+buttons.addEventListener("click", event => {
+    let target = event.target.id;
+    let totalWins = 0;
+    let totalLoses = 0;
+    let totalTies = 0;
+    let numberGames = 0;
+    
+    while (numberGames < 5) {
+
+        let round = results;
+
+        if (round.includes("win") === true) {
+            totalWins++;
+            numberGames++;
+        } else if (round.includes("lose") === true) {
+            totalLoses++ ;
+            numberGames++ ;
+        } else {
+            totalTies++ ;
+            numberGames++ ;
+        }
+
+
+    }
+})
