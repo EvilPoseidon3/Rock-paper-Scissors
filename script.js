@@ -56,6 +56,8 @@ function gameResults(x,   y) {
     buttons.addEventListener("click", event => {
             let target = event.target.id;
             let computerChoice = getComputerChoice();
+
+        if (gameWins < 5 && gameLose < 5) {
             switch(target){
                 case "buttonRock" :
                     let rockGame = gameResults(computerChoice, "rock");
@@ -111,11 +113,20 @@ function gameResults(x,   y) {
                     loses.textContent = gameLose;
                     ties.textContent = gameTies;
                     break;
+            }} else { 
+                if (gameWins > gameLose) {
+                    resultOfTheGame = "Congradualtions you won the game!";
+                } else if (gameLose > gameWins) {
+                    resultOfTheGame = "You Fucking Suck loser you lost!"
+                } else {
+                    resultOfTheGame = "Well looks like its a tie, Try agian."
+                }
+                results.textContent = resultOfTheGame;
+
+                
             }
+
+
    });
 
-
-            if (totalGames >= 5) {
-                buttons.removeEventListener('click')
-            }
   
