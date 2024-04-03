@@ -39,6 +39,15 @@ function gameResults(x,   y) {
    let buttonScissor = document.querySelector('#buttonScissor');
    let results = document.querySelector('#results');
    let buttons = document.querySelector("#buttons");
+   let score = document.querySelector("#score");
+   let wins = document.querySelector("#wins");
+   let loses = document.querySelector("#loses");
+   let ties = document.querySelector("#ties");
+
+   let gameWins = 0;
+   let gameLose = 0;
+   let gameTies = 0;
+   let totalGames = 0;
 
     
    
@@ -46,48 +55,67 @@ function gameResults(x,   y) {
     
     buttons.addEventListener("click", event => {
             let target = event.target.id;
-let computerChoice = getComputerChoice();
+            let computerChoice = getComputerChoice();
             switch(target){
                 case "buttonRock" :
                     let rockGame = gameResults(computerChoice, "rock");
                     results.textContent = rockGame;
+                    if (rockGame.includes("win") === true ) {
+                        gameWins++;
+                        totalGames++;
+                    } else if (rockGame.includes("lose") === true) {
+                        gameLose++;
+                        totalGames++;
+                    } else {
+                        gameTies++;
+                        totalGames++;
+                    }
+                    wins.textContent = gameWins;
+                    loses.textContent = gameLose;
+                    ties.textContent = gameTies;
+                    
                     break;
 
                 case "buttonPaper" :
                     let paperGame = gameResults(computerChoice, "paper");
                     results.textContent = paperGame;
+                    if (paperGame.includes("win") === true ) {
+                        gameWins++;
+                        totalGames++;
+                    } else if (paperGame.includes("lose") === true) {
+                        gameLose++;
+                        totalGames++;
+                    } else {
+                        gameTies++;
+                        totalGames++;
+                    }
+                    wins.textContent = gameWins;
+                    loses.textContent = gameLose;
+                    ties.textContent = gameTies;
                     break;
 
                 case "buttonScissor" :
                     let scissorGame = gameResults(computerChoice, "scissors");
                     results.textContent = scissorGame;
+                    if (scissorGame.includes("win") === true ) {
+                        gameWins++;
+                        totalGames++;
+                    } else if (scissorGame.includes("lose") === true) {
+                        gameLose++;
+                        totalGames++;
+                    } else {
+                        gameTies++;
+                        totalGames++;
+                    }
+                    wins.textContent = gameWins;
+                    loses.textContent = gameLose;
+                    ties.textContent = gameTies;
                     break;
             }
    });
 
 
-buttons.addEventListener("click", event => {
-    let target = event.target.id;
-    let totalWins = 0;
-    let totalLoses = 0;
-    let totalTies = 0;
-    let numberGames = 0;
-    
-    while (numberGames < 5) {
-
-        let round = results;
-
-        if (round.includes("win") === true) {
-            totalWins++;
-            numberGames++;
-        } else if (round.includes("lose") === true) {
-            totalLoses++ ;
-            numberGames++ ;
-        } else {
-            totalTies++ ;
-            numberGames++ ;
-        }
-
-
-    }
-})
+            if (totalGames >= 5) {
+                buttons.removeEventListener('click')
+            }
+  
